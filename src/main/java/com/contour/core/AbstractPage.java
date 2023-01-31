@@ -12,9 +12,14 @@ public abstract class AbstractPage {
 
     private WebDriverWait explicitWait;
     private WebElement element;
+    private Duration timeOut = Duration.ofMillis(5000);
 
     private By byXpath(String xpathValue) {
         return By.xpath(xpathValue);
+    }
+
+    private By byXpath(String xpath, String...value) {
+        return By.xpath(String.format(xpath, value));
     }
 
     protected WebElement find(WebDriver driver, String xpathValue) {
@@ -25,14 +30,26 @@ public abstract class AbstractPage {
         find(driver, xpathValue).click();
     }
 
-    protected void waitForElementVisible(WebDriver driver, String xpathValue, Duration duration) {
-        explicitWait = new WebDriverWait(driver, duration);
+    protected String getDynamicLocator(String xpath, String...value){
+        return String.format(xpath, value);
+    }
+
+    protected void clickElementWithValue(WebDriver driver, String xpath, String value){
+        find(driver, getDynamicLocator(xpath, value)).click();
+    }
+    protected void waitForElementVisible(WebDriver driver, String xpathValue) {
+        explicitWait = new WebDriverWait(driver, timeOut);
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(byXpath(xpathValue)));
     }
 
-    protected void waitForElementClickable(WebDriver driver, String xpathValue, Duration duration) {
-        explicitWait = new WebDriverWait(driver, duration);
+    protected void waitForElementClickable(WebDriver driver, String xpathValue) {
+        explicitWait = new WebDriverWait(driver, timeOut);
         explicitWait.until(ExpectedConditions.elementToBeClickable(byXpath(xpathValue)));
+    }
+
+    protected void waitForElementClickable(WebDriver driver, String xpath, String...value) {
+        explicitWait = new WebDriverWait(driver, timeOut);
+        explicitWait.until(ExpectedConditions.elementToBeClickable(byXpath(xpath, value)));
     }
 
     public boolean isElementDisplay(WebDriver driver, String xpathValue) {

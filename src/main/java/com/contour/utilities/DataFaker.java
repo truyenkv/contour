@@ -7,22 +7,26 @@ import java.util.Random;
 public class DataFaker {
 
     private static Faker faker = new Faker();
-    public static String getEmail(){
+
+    public static String getEmail() {
         return faker.internet().emailAddress();
     }
 
-    public static String getName(){
-        return faker.name().fullName();
+    public static String getFirstName() {
+        return faker.name().firstName();
     }
 
-    public static String getPhone(){
+    public static String getLastName() {
+        return faker.name().lastName();
+    }
+
+    public static String getWeb() {
+        return "http://" + faker.name().firstName() + ".contour.com";
+    }
+
+    public static String getPhone() {
         Random rnd = new Random();
         int number = rnd.nextInt(99999999);
         return String.valueOf(number);
     }
-
-    public static String getMiddle(){
-        return "Join";
-    }
-
 }

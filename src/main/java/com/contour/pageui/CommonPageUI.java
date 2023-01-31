@@ -10,8 +10,9 @@ public class CommonPageUI {
     public static final String LAST_NAME_FIELD = "//input[@id='last_name']";
     public static final String TITLE_FIELD = "//input[@id='title']";
     public static final String PHONE_FIELD = "//input[@id='phone']";
-    public static final String WEBSITE_FIELD = "//input[@id='phone']";
+    public static final String WEBSITE_FIELD = "//input[@id='website']";
     public static final String EMAIL_FIELD = "//input[@id='email']";
+    public static final String COMPANY_FIELD = "//input[@id='company']";
 
     //Common button
     public static final String SEARCH_FIELD = "//input[@id='default-search']";
@@ -25,4 +26,7 @@ public class CommonPageUI {
     public static final String TITLE_COLUMN = "//table/tbody/tr[%s]/td[3]";
     public static final String COMPANY_COLUMN = "//table/tbody/tr[%s]/td[4]";
     public static final String EMAIL_ADDRESS_COLUMN = "//table/tbody/tr[%s]/td[5]";
+
+    //Menu
+    public static final String MENU = "//*[contains(text(), '%s')]";
 }
