@@ -4,6 +4,7 @@ import com.contour.core.AbstractTest;
 import com.contour.model.MemberModel;
 import com.contour.pageobject.AddMemberPageObject;
 import com.contour.pageobject.HomePageObject;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +26,7 @@ public class AddMemberTest extends AbstractTest {
         homePageObject = new HomePageObject(driver);
     }
 
-    //    @Test
+    @Test
     public void verifyAddNewMemberSuccessful() {
         addMemberPageObject = homePageObject.clickOnAddMemberMenu();
         addMemberPageObject.inputMemberInfo(memberModel);
@@ -45,6 +46,7 @@ public class AddMemberTest extends AbstractTest {
         homePageObject.validateNewMemberIsDisplayOnTable(memberID, memberModel);
     }
 
+    @AfterEach
     public void afterMethod() {
         LOGGER.info("Close the driver");
         closeBrowser(driver);

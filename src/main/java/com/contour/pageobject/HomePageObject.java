@@ -23,7 +23,7 @@ public class HomePageObject extends AbstractPage {
 
     public void validateNewMemberIsDisplayOnTable(String memberID, MemberModel memberModel) {
         int rowNum = finds(driver, CommonPageUI.TABLE_ROWS).size();
-        for (int i = 0; i < rowNum; i++) {
+        for (int i = 1; i < rowNum; i++) {
             if (getDynamicText(driver, CommonPageUI.ID_COLUMN, String.valueOf(i)).equals(memberID)) {
                 String index = String.valueOf(i);
                 assertThat(getDynamicText(driver, CommonPageUI.MEMBER_NAME_COLUMN, index)).isEqualTo(memberModel.getFirstName() + " " + memberModel.getLastName());
