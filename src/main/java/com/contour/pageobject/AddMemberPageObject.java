@@ -88,7 +88,7 @@ public class AddMemberPageObject extends AbstractPage {
 
     public HomePageObject clickOnHomeMenu() {
         waitForElementClickable(driver, CommonPageUI.MENU, HOME.getName());
-        clickElementWithValue(driver, CommonPageUI.MENU, HOME.getName());
+        clickDynamicElement(driver, CommonPageUI.MENU, HOME.getName());
         return PageObjectManager.homePageObject(driver);
     }
 }

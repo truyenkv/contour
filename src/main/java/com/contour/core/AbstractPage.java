@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public abstract class AbstractPage {
 
@@ -26,6 +27,10 @@ public abstract class AbstractPage {
         return driver.findElement(byXpath(xpathValue));
     }
 
+    protected List<WebElement> finds(WebDriver driver, String xpathValue) {
+        return driver.findElements(byXpath(xpathValue));
+    }
+
     protected void clickToElement(WebDriver driver, String xpathValue) {
         find(driver, xpathValue).click();
     }
@@ -34,7 +39,7 @@ public abstract class AbstractPage {
         return String.format(xpath, value);
     }
 
-    protected void clickElementWithValue(WebDriver driver, String xpath, String value){
+    protected void clickDynamicElement(WebDriver driver, String xpath, String...value){
         find(driver, getDynamicLocator(xpath, value)).click();
     }
     protected void waitForElementVisible(WebDriver driver, String xpathValue) {
@@ -58,6 +63,10 @@ public abstract class AbstractPage {
 
     protected String getElementText(WebDriver driver, String xpathValue) {
         return find(driver, xpathValue).getText();
+    }
+
+    protected String getDynamicText(WebDriver driver, String xpath, String...value) {
+        return find(driver, getDynamicLocator(xpath, value)).getText();
     }
 
     protected void inputText(WebDriver driver, String xpath, String value){
