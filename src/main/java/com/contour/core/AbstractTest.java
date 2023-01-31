@@ -1,39 +1,38 @@
 package com.contour.core;
 
-import com.contour.utilities.PropertiesReader;
+import com.contour.utilities.LoadConfig;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URL;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class AbstractTest {
     private WebDriver driver;
-    private URL url;
     public static String browserEnv = System.getProperty("browser");
-    PropertiesReader propertiesReader = PropertiesReader.getInstance();
 
-    protected WebDriver getDriver(String browserName){
-        if(browserEnv!=null){
-            browserName = browserEnv;
+    protected WebDriver getDriver() {
+        Browser browser = Browser.valueOf(browserEnv.toUpperCase());
+        switch (browser) {
+            case FIREFOX:
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            case CHROME:
+            default:
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
         }
-        String site = propertiesReader.getValue("url");
-        try {
-            url = new URL(propertiesReader.getValue("server.test"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        Browser browser = Browser.valueOf(browserName.toUpperCase());
-        if(browser == Browser.CHROME){
-            driver = new RemoteWebDriver(url, new ChromeOptions());
-        }
-        else if (browser == Browser.FIREFOX){
-            driver = new RemoteWebDriver(url, new FirefoxOptions());
-        }
+        String site = LoadConfig.CONFIG.getPropertyByEnv("url");
+
         driver.manage().window().maximize();
         driver.get(site);
         return driver;
+    }
+
+    protected void closeBrowser(WebDriver driver) {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
