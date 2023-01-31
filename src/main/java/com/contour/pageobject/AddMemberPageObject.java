@@ -8,8 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.contour.constant.MenuEnum.HOME;
-import static com.contour.constant.MenuEnum.SEARCH_MEMBER;
+import static com.contour.constant.MenuEnum.*;
 import static com.contour.constant.SystemMessage.ADD_USER_SUCCESS_TOAST_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,44 +32,44 @@ public class AddMemberPageObject extends AbstractPage {
 
     public void inputFirstName(String name) {
         LOGGER.info("Input fist name");
-        waitForElementVisible(driver, CommonPageUI.FIRST_NAME_FIELD);
-        inputText(driver, CommonPageUI.FIRST_NAME_FIELD, name);
+        waitForElementVisible(driver, AddMemberPageUI.FIRST_NAME_FIELD);
+        inputText(driver, AddMemberPageUI.FIRST_NAME_FIELD, name);
     }
 
     public void inputLastName(String lastName) {
         LOGGER.info("Input last name");
-        waitForElementVisible(driver, CommonPageUI.LAST_NAME_FIELD);
-        inputText(driver, CommonPageUI.LAST_NAME_FIELD, lastName);
+        waitForElementVisible(driver, AddMemberPageUI.LAST_NAME_FIELD);
+        inputText(driver, AddMemberPageUI.LAST_NAME_FIELD, lastName);
     }
 
     public void inputTitle(String title) {
         LOGGER.info("Input title");
-        waitForElementVisible(driver, CommonPageUI.TITLE_FIELD);
-        inputText(driver, CommonPageUI.TITLE_FIELD, title);
+        waitForElementVisible(driver, AddMemberPageUI.TITLE_FIELD);
+        inputText(driver, AddMemberPageUI.TITLE_FIELD, title);
     }
 
     public void inputCompany(String company) {
         LOGGER.info("Input company");
-        waitForElementVisible(driver, CommonPageUI.COMPANY_FIELD);
-        inputText(driver, CommonPageUI.COMPANY_FIELD, company);
+        waitForElementVisible(driver, AddMemberPageUI.COMPANY_FIELD);
+        inputText(driver, AddMemberPageUI.COMPANY_FIELD, company);
     }
 
     public void inputPhone(String phone) {
         LOGGER.info("Input phone");
-        waitForElementVisible(driver, CommonPageUI.PHONE_FIELD);
-        inputText(driver, CommonPageUI.PHONE_FIELD, phone);
+        waitForElementVisible(driver, AddMemberPageUI.PHONE_FIELD);
+        inputText(driver, AddMemberPageUI.PHONE_FIELD, phone);
     }
 
     public void inputWebSite(String web) {
         LOGGER.info("Input web site");
-        waitForElementVisible(driver, CommonPageUI.WEBSITE_FIELD);
-        inputText(driver, CommonPageUI.WEBSITE_FIELD, web);
+        waitForElementVisible(driver, AddMemberPageUI.WEBSITE_FIELD);
+        inputText(driver, AddMemberPageUI.WEBSITE_FIELD, web);
     }
 
     public void inputEmail(String email) {
         LOGGER.info("Input email");
-        waitForElementVisible(driver, CommonPageUI.EMAIL_FIELD);
-        inputText(driver, CommonPageUI.EMAIL_FIELD, email);
+        waitForElementVisible(driver, AddMemberPageUI.EMAIL_FIELD);
+        inputText(driver, AddMemberPageUI.EMAIL_FIELD, email);
     }
 
     public void checkOnAgreeCheckBox() {
@@ -113,5 +112,12 @@ public class AddMemberPageObject extends AbstractPage {
         waitForElementClickable(driver, CommonPageUI.MENU, SEARCH_MEMBER.getName());
         clickDynamicElement(driver, CommonPageUI.MENU, SEARCH_MEMBER.getName());
         return PageObjectManager.searchMemberPageObject(driver);
+    }
+
+    public ViewMemberPageObject clickOnViewMemberMenu() {
+        LOGGER.info("Click on View Member menu from Add Member page");
+        waitForElementClickable(driver, CommonPageUI.MENU, VIEW_MEMBER.getName());
+        clickDynamicElement(driver, CommonPageUI.MENU, VIEW_MEMBER.getName());
+        return PageObjectManager.viewMemberPageObject(driver);
     }
 }

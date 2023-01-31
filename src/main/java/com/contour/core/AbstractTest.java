@@ -41,10 +41,9 @@ public class AbstractTest {
                 break;
             default:
                 LOGGER.error("Invalid browser");
-
         }
-        String site = LoadConfig.CONFIG.getPropertyByEnv(ConfigsEnum.URL.getName());
 
+        String site = LoadConfig.CONFIG.getPropertyByEnv(ConfigsEnum.URL.getName());
         driver.manage().window().maximize();
         driver.get(site);
         return driver;

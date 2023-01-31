@@ -57,10 +57,6 @@ public abstract class AbstractPage {
         explicitWait.until(ExpectedConditions.elementToBeClickable(byXpath(xpath, value)));
     }
 
-    public boolean isElementDisplay(WebDriver driver, String xpathValue) {
-        return find(driver, xpathValue).isDisplayed();
-    }
-
     protected String getElementText(WebDriver driver, String xpathValue) {
         return find(driver, xpathValue).getText();
     }
