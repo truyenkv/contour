@@ -9,10 +9,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import static com.contour.constant.ConfigsEnum.BROWSER;
+
 public class AbstractTest {
     private WebDriver driver;
     private BrowserEnum browserEnum;
-    public static String browserEnv = System.getProperty("browser");
+    public static String browserEnv = System.getProperty(BROWSER.getName());
 
     protected WebDriver getDriver() {
         if (browserEnv != null) {
