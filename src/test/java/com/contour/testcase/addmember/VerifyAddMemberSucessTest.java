@@ -1,4 +1,4 @@
-package com.contour.testcase;
+package com.contour.testcase.addmember;
 
 import com.contour.core.AbstractTest;
 import com.contour.model.MemberModel;
@@ -11,8 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AddMemberTest extends AbstractTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(AddMemberTest.class);
+public class VerifyAddMemberSucessTest extends AbstractTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(VerifyAddMemberSucessTest.class);
     private WebDriver driver;
     private MemberModel memberModel;
     private HomePageObject homePageObject;
@@ -28,6 +28,7 @@ public class AddMemberTest extends AbstractTest {
 
     @Test
     public void verifyAddNewMemberSuccessful() {
+        LOGGER.info("Verify User adds new member successful");
         addMemberPageObject = homePageObject.clickOnAddMemberMenu();
         addMemberPageObject.inputMemberInfo(memberModel);
         addMemberPageObject.checkOnAgreeCheckBox();

@@ -8,10 +8,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.contour.constant.ConfigsEnum.BROWSER;
 
 public class AbstractTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractTest.class);
     private WebDriver driver;
     private BrowserEnum browserEnum;
     public static String browserEnv = System.getProperty(BROWSER.getName());
@@ -37,7 +40,7 @@ public class AbstractTest {
                 driver = new EdgeDriver();
                 break;
             default:
-                System.out.println("Invalid browser");
+                LOGGER.error("Invalid browser");
 
         }
         String site = LoadConfig.CONFIG.getPropertyByEnv(ConfigsEnum.URL.getName());
