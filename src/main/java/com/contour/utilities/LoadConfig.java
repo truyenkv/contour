@@ -3,6 +3,8 @@ package com.contour.utilities;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 
+import static com.contour.constant.ConfigsEnum.ENV;
+
 public class LoadConfig {
 
     private final Config config;
@@ -13,7 +15,7 @@ public class LoadConfig {
     }
 
     public String getPropertyByEnv(String key) {
-        String environment = System.getProperty("env");
+        String environment = System.getProperty(ENV.getName());
         Config conf = config.getConfig(environment);
         return conf.getString(key);
     }
