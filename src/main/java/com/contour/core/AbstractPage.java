@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public abstract class AbstractPage {
 
@@ -30,7 +29,6 @@ public abstract class AbstractPage {
         explicitWait = new WebDriverWait(driver, duration);
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(byXpath(xpathValue)));
     }
-
 
     protected void waitForElementClickable(WebDriver driver, String xpathValue, Duration duration) {
         explicitWait = new WebDriverWait(driver, duration);

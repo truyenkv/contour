@@ -1,6 +1,5 @@
 package com.contour.constant;
 
 public enum BrowserEnum {
-    CHROME,
-    FIREFOX;
+    CHROME, FIREFOX, MICROSOFT_EDGE;
 }
