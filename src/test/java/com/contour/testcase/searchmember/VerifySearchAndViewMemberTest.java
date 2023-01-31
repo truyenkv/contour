@@ -8,6 +8,7 @@ import com.contour.pageobject.SearchMemberPageObject;
 import com.contour.pageobject.ViewMemberPageObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -43,6 +44,7 @@ public class VerifySearchAndViewMemberTest extends AbstractTest {
     }
 
     @Test
+    @Tag("smoke")
     public void verifySearchMemberByFullNameAfterAddingSuccessful() {
         LOGGER.info("Verify User search member by full name after adding successful");
         String fullName = memberModel.getFirstName() + " " + memberModel.getLastName();

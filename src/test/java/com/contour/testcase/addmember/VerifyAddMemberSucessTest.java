@@ -6,6 +6,7 @@ import com.contour.pageobject.AddMemberPageObject;
 import com.contour.pageobject.HomePageObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;

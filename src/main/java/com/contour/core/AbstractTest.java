@@ -52,6 +52,7 @@ public class AbstractTest {
     protected void closeBrowser(WebDriver driver) {
         if (driver != null) {
             driver.quit();
+            driver.close();
         }
     }
 }
